@@ -1,0 +1,52 @@
+# FloShake Configuration
+
+# Site settings
+title: FloShake
+description: "Intelligence-augmented creativity framework blending human wisdom with AI to enhance creative flow"
+url: "https://floshake.io"
+author: "Derek Claude Simmons"
+logo: "/assets/images/floshake-logo.png"
+
+# Jekyll settings
+markdown: kramdown
+permalink: pretty
+theme: minima
+
+# Collections
+collections:
+  docs:
+    output: true
+    permalink: /:collection/:path/
+
+# Default settings
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "docs"
+    values:
+      layout: "doc"
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
+# Exclude files from being included in the build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - CNAME
+  - README.md
+  - LICENSE
