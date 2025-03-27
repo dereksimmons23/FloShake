@@ -1,0 +1,23 @@
+---
+layout: default
+---
+
+<div class="state-banner state-{{ page.state }}">
+  <div class="state-indicator">{{ page.state | capitalize }} State</div>
+  <div class="state-timestamp">Last updated: {{ page.last_modified_at | default: page.date | date: "%Y-%m-%d" }}</div>
+</div>
+
+<article class="state-content">
+  {{ content }}
+</article>
+
+{% if page.related_components %}
+<div class="related-components">
+  <h2>Related Components</h2>
+  <ul>
+    {% for component in page.related_components %}
+    <li><a href="{{ component.url }}">{{ component.title }}</a></li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}

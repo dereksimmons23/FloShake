@@ -60,3 +60,39 @@ google_fonts:
 # Custom CSS
 stylesheets:
   - "/assets/css/main.css"
+
+  # Quantum State Framework
+states:
+  - creation
+  - integration
+  - application
+  - foundation
+
+# State Collections
+collections:
+  states:
+    output: true
+    permalink: /:collection/:path/
+
+# State Front Matter Defaults
+defaults:
+  - scope:
+      path: "_states/creation"
+    values:
+      state: "creation"
+      layout: "state"
+  - scope:
+      path: "_states/integration"
+    values:
+      state: "integration"
+      layout: "state"
+  - scope:
+      path: "_states/application"
+    values:
+      state: "application"
+      layout: "state"
+  - scope:
+      path: "_states/foundation"
+    values:
+      state: "foundation"
+      layout: "state"
