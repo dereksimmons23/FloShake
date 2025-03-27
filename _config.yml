@@ -50,6 +50,7 @@ exclude:
   - CNAME
   - README.md
   - LICENSE
+  - "*.pdf"  # Exclude any pre-generated PDFs from the site build
 
 # Google Fonts
 google_fonts: 
@@ -96,3 +97,9 @@ defaults:
     values:
       state: "foundation"
       layout: "state"
+
+# Ensure no PDF generation plugins are enabled
+plugins:
+  - jekyll-seo-tag
+  - jekyll-feed
+  # Remove or comment out any PDF-related plugins
