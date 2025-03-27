@@ -2,22 +2,338 @@
 layout: default
 ---
 
-<div class="state-banner state-{{ page.state }}">
-  <div class="state-indicator">{{ page.state | capitalize }} State</div>
-  <div class="state-timestamp">Last updated: {{ page.last_modified_at | default: page.date | date: "%Y-%m-%d" }}</div>
+<div class="state-container">
+  <!-- State Banner -->
+  <div class="state-banner state-{{ page.state }}">
+    <div class="state-indicator">{{ page.state | capitalize }} State</div>
+    <div class="state-timestamp">Last updated: {{ page.last_modified_at | default: page.date | date: "%Y-%m-%d" }}</div>
+  </div>
+  
+  <!-- State Context -->
+  <div class="state-context">
+    <div class="state-context-header">
+      <h4>State Context</h4>
+      <div class="state-progression">
+        {% if page.state == "creation" %}
+          <div class="state-dot active" title="Creation">C</div>
+          <div class="state-arrow">→</div>
+          <div class="state-dot" title="Integration">I</div>
+          <div class="state-arrow">→</div>
+          <div class="state-dot" title="Application">A</div>
+          <div class="state-arrow">→</div>
+          <div class="state-dot" title="Foundation">F</div>
+        {% elsif page.state == "integration" %}
+          <div class="state-dot" title="Creation">C</div>
+          <div class="state-arrow">→</div>
+          <div class="state-dot active" title="Integration">I</div>
+          <div class="state-arrow">→</div>
+          <div class="state-dot" title="Application">A</div>
+          <div class="state-arrow">→</div>
+          <div class="state-dot" title="Foundation">F</div>
+        {% elsif page.state == "application" %}
+          <div class="state-dot" title="Creation">C</div>
+          <div class="state-arrow">→</div>
+          <div class="state-dot" title="Integration">I</div>
+          <div class="state-arrow">→</div>
+          <div class="state-dot active" title="Application">A</div>
+          <div class="state-arrow">→</div>
+          <div class="state-dot" title="Foundation">F</div>
+        {% elsif page.state == "foundation" %}
+          <div class="state-dot" title="Creation">C</div>
+          <div class="state-arrow">→</div>
+          <div class="state-dot" title="Integration">I</div>
+          <div class="state-arrow">→</div>
+          <div class="state-dot" title="Application">A</div>
+          <div class="state-arrow">→</div>
+          <div class="state-dot active" title="Foundation">F</div>
+        {% endif %}
+      </div>
+    </div>
+    
+    <div class="state-description">
+      {% if page.state == "creation" %}
+        <p>You're viewing this content in its <strong>Creation State</strong>—representing nascent ideas in formative development.</p>
+      {% elsif page.state == "integration" %}
+        <p>You're viewing this content in its <strong>Integration State</strong>—where connections are forming between discrete elements.</p>
+      {% elsif page.state == "application" %}
+        <p>You're viewing this content in its <strong>Application State</strong>—representing practical implementation of synthesized concepts.</p>
+      {% elsif page.state == "foundation" %}
+        <p>You're viewing this content in its <strong>Foundation State</strong>—representing established knowledge serving as building blocks.</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <article class="state-content">
+    <h1>{{ page.title }}</h1>
+    {{ content }}
+  </article>
+
+  <!-- State Metadata -->
+  <aside class="state-metadata">
+    {% if page.state_history %}
+      <div class="state-history">
+        <h4>State History</h4>
+        <ul class="state-history-list">
+          {% for transition in page.state_history %}
+            <li class="transition-item">
+              <span class="state-{{ transition.from }}">{{ transition.from | capitalize }}</span>
+              <span class="transition-arrow">→</span>
+              <span class="state-{{ transition.to }}">{{ transition.to | capitalize }}</span>
+              <span class="transition-date">{{ transition.date | date: "%Y-%m-%d" }}</span>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+
+    {% if page.related_components %}
+      <div class="related-components">
+        <h4>Related Components</h4>
+        <ul class="related-components-list">
+          {% for component in page.related_components %}
+            <li>
+              <a href="{{ component.url }}">{{ component.title }}</a>
+              {% if component.state %}
+                <span class="component-state state-{{ component.state }}">{{ component.state }}</span>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+
+    {% if page.contributors %}
+      <div class="contributors">
+        <h4>Contributors</h4>
+        <ul class="contributors-list">
+          {% for contributor in page.contributors %}
+            <li>{{ contributor }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+  </aside>
+
+  <!-- State Transition Actions -->
+  <div class="state-actions">
+    <h4>State Transitions</h4>
+    <div class="action-buttons">
+      {% if page.state == "creation" %}
+        <a href="#" class="button transition-button" data-to-state="integration">Move to Integration</a>
+      {% elsif page.state == "integration" %}
+        <a href="#" class="button transition-button" data-to-state="creation">Return to Creation</a>
+        <a href="#" class="button transition-button" data-to-state="application">Move to Application</a>
+      {% elsif page.state == "application" %}
+        <a href="#" class="button transition-button" data-to-state="integration">Return to Integration</a>
+        <a href="#" class="button transition-button" data-to-state="foundation">Move to Foundation</a>
+      {% elsif page.state == "foundation" %}
+        <a href="#" class="button transition-button" data-to-state="application">Return to Application</a>
+      {% endif %}
+    </div>
+    <p class="transition-note">Note: State transitions require documentation of the changes that enabled this transition.</p>
+  </div>
 </div>
 
-<article class="state-content">
-  {{ content }}
-</article>
+<!-- CSS to add to main.css -->
+<style>
+  .state-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+  
+  .state-context {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: var(--spacing-md);
+    box-shadow: var(--box-shadow);
+  }
+  
+  .state-context-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .state-context-header h4 {
+    margin: 0;
+  }
+  
+  .state-progression {
+    display: flex;
+    align-items: center;
+  }
+  
+  .state-dot {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #e9ecef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 12px;
+  }
+  
+  .state-dot.active {
+    background-color: var(--secondary-color);
+    color: white;
+  }
+  
+  .state-arrow {
+    margin: 0 var(--spacing-xs);
+    color: #adb5bd;
+  }
+  
+  .state-description {
+    padding: var(--spacing-sm) 0;
+  }
+  
+  .state-description p {
+    margin: 0;
+  }
+  
+  .state-metadata {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: var(--spacing-md);
+    box-shadow: var(--box-shadow);
+  }
+  
+  .state-metadata h4 {
+    margin-top: 0;
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.1rem;
+  }
+  
+  .state-history-list,
+  .related-components-list,
+  .contributors-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .transition-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  .transition-arrow {
+    margin: 0 var(--spacing-xs);
+    color: #6c757d;
+  }
+  
+  .transition-date {
+    margin-left: auto;
+    font-size: 0.9rem;
+    color: #6c757d;
+  }
+  
+  .component-state {
+    font-size: 0.8rem;
+    padding: 2px 6px;
+    border-radius: 12px;
+    margin-left: var(--spacing-xs);
+  }
+  
+  .state-actions {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: var(--spacing-md);
+    box-shadow: var(--box-shadow);
+  }
+  
+  .action-buttons {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .transition-note {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin: 0;
+  }
+  
+  /* State-specific colors for component badges */
+  .component-state.state-creation {
+    background-color: var(--creation-color);
+    color: var(--text-color);
+  }
+  
+  .component-state.state-integration {
+    background-color: var(--integration-color);
+    color: white;
+  }
+  
+  .component-state.state-application {
+    background-color: var(--application-color);
+    color: white;
+  }
+  
+  .component-state.state-foundation {
+    background-color: var(--foundation-color);
+    color: var(--text-color);
+  }
+  
+  /* Media queries for responsive layout */
+  @media (min-width: 992px) {
+    .state-container {
+      grid-template-columns: 3fr 1fr;
+      grid-template-areas:
+        "banner banner"
+        "context context"
+        "content metadata"
+        "actions actions";
+    }
+    
+    .state-banner {
+      grid-area: banner;
+    }
+    
+    .state-context {
+      grid-area: context;
+    }
+    
+    .state-content {
+      grid-area: content;
+    }
+    
+    .state-metadata {
+      grid-area: metadata;
+    }
+    
+    .state-actions {
+      grid-area: actions;
+    }
+  }
+  
+  @media (max-width: 991px) {
+    .action-buttons {
+      flex-direction: column;
+    }
+  }
+</style>
 
-{% if page.related_components %}
-<div class="related-components">
-  <h2>Related Components</h2>
-  <ul>
-    {% for component in page.related_components %}
-    <li><a href="{{ component.url }}">{{ component.title }}</a></li>
-    {% endfor %}
-  </ul>
-</div>
-{% endif %}
+<!-- JavaScript for state transitions - to be implemented later -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const transitionButtons = document.querySelectorAll('.transition-button');
+    
+    transitionButtons.forEach(button => {
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        const toState = this.getAttribute('data-to-state');
+        
+        // This is a placeholder - in a real implementation, this would open a form
+        // or modal to document the transition
+        alert(`Transitioning to ${toState} state. In a complete implementation, this would open a form to document the transition.`);
+      });
+    });
+  });
+</script>

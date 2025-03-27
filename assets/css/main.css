@@ -1,166 +1,667 @@
-/* FloShake Main CSS - Phase 1 Implementation */
+/* FloShake Main CSS - Quantum State Implementation */
 
 :root {
+  /* Core color palette */
   --primary-color: #1a365d;     /* Deep sapphire - knowledge depth */
   --secondary-color: #2a9d8f;   /* Teal flow - creative momentum */
   --accent-color: #e9c46a;      /* Quantum amber - insights */
   --light-color: #f8f9fa;       /* Foundation gray - structure */
   --text-color: #212529;        /* Main text color */
   --link-color: #2a9d8f;        /* Link color */
+  
+  /* State-specific colors */
+  --creation-color: var(--accent-color);
+  --creation-border: #d4a24a;
+  --integration-color: var(--secondary-color);
+  --integration-border: #1a7d71;
+  --application-color: var(--primary-color);
+  --application-border: #0f213d;
+  --foundation-color: var(--light-color);
+  --foundation-border: #d4d7da;
+  
+  /* Typography */
   --header-font: 'Montserrat', sans-serif;
   --body-font: 'Inter', sans-serif;
   --code-font: 'Fira Mono', monospace;
+  
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-xxl: 3rem;
+  
+  /* Other variables */
+  --border-radius: 4px;
+  --box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
+/* Base styles */
 body {
   font-family: var(--body-font);
   line-height: 1.6;
   color: var(--text-color);
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
+  background-color: white;
+  margin: 0;
+  padding: 0;
 }
 
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+/* Typography */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--header-font);
   color: var(--primary-color);
-  margin-top: 2rem;
+  margin-top: var(--spacing-xl);
+  margin-bottom: var(--spacing-md);
+  font-weight: 600;
+  line-height: 1.3;
 }
 
 h1 {
   font-size: 2.5rem;
   border-bottom: 4px solid var(--accent-color);
-  padding-bottom: 0.5rem;
+  padding-bottom: var(--spacing-sm);
 }
 
 h2 {
   font-size: 2rem;
   border-bottom: 2px solid var(--secondary-color);
-  padding-bottom: 0.3rem;
+  padding-bottom: var(--spacing-xs);
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+p {
+  margin-bottom: var(--spacing-md);
 }
 
 a {
   color: var(--link-color);
   text-decoration: none;
-  transition: color 0.2s;
+  transition: color 0.2s, border-bottom-color 0.2s;
+  border-bottom: 1px solid transparent;
 }
 
 a:hover {
   color: var(--accent-color);
-  text-decoration: underline;
+  border-bottom-color: var(--accent-color);
 }
 
 code {
   font-family: var(--code-font);
   background-color: #f1f1f1;
-  padding: 0.2rem 0.4rem;
-  border-radius: 3px;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius);
+  font-size: 0.9em;
 }
 
+pre {
+  background-color: #f1f1f1;
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius);
+  overflow-x: auto;
+  margin: var(--spacing-md) 0;
+}
+
+pre code {
+  padding: 0;
+  background-color: transparent;
+}
+
+blockquote {
+  border-left: 4px solid var(--secondary-color);
+  padding-left: var(--spacing-md);
+  margin-left: 0;
+  color: #555;
+  font-style: italic;
+}
+
+/* Navigation */
 .site-header {
+  background-color: white;
+  box-shadow: var(--box-shadow);
+  padding: var(--spacing-md) 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 0;
-  border-bottom: 1px solid #eaeaea;
 }
 
 .site-title {
-  font-weight: bold;
+  font-family: var(--header-font);
+  font-weight: 700;
   font-size: 1.5rem;
+  color: var(--primary-color);
+  margin: 0;
 }
 
-.site-nav {
+.site-title .flo {
+  color: var(--primary-color);
+}
+
+.site-title .shake {
+  color: var(--secondary-color);
+}
+
+.nav-links {
   display: flex;
-  gap: 1.5rem;
+  gap: var(--spacing-lg);
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.content {
-  padding: 2rem 0;
+.nav-link {
+  color: var(--text-color);
+  text-decoration: none;
+  padding: var(--spacing-sm);
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s;
 }
 
-/* Quantum state visualization */
-.quantum-states {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 1rem;
-  max-width: 600px;
-  margin: 2rem auto;
+.nav-link:hover, .nav-link.active {
+  border-color: var(--accent-color);
 }
 
-.state {
-  padding: 1.5rem;
-  border-radius: 8px;
+/* Mobile navigation */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block;
+  }
+  
+  .nav-links {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background-color: white;
+    flex-direction: column;
+    padding: var(--spacing-md);
+    box-shadow: var(--box-shadow);
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+    z-index: 99;
+  }
+  
+  .nav-links.active {
+    transform: translateY(0);
+  }
+}
+
+/* Buttons */
+.button {
+  display: inline-block;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background-color: var(--secondary-color);
   color: white;
-  text-align: center;
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s;
+  border: none;
+  cursor: pointer;
 }
 
-.creation-state {
+.button:hover {
+  background-color: #238b7e;
+  color: white;
+}
+
+.button.primary {
   background-color: var(--primary-color);
 }
 
+.button.primary:hover {
+  background-color: #15294d;
+}
+
+.button.accent {
+  background-color: var(--accent-color);
+  color: var(--text-color);
+}
+
+.button.accent:hover {
+  background-color: #d4a24a;
+}
+
+/* Card layouts */
+.card {
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+}
+
+.card-title {
+  margin-top: 0;
+  font-size: 1.25rem;
+}
+
+.card-content {
+  margin-bottom: 0;
+}
+
+/* Grid layouts */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+  margin: var(--spacing-lg) 0;
+}
+
+/* Hero section */
+.hero {
+  background-color: var(--light-color);
+  padding: var(--spacing-xxl) 0;
+  margin-bottom: var(--spacing-xl);
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hero h1 {
+  border-bottom: none;
+  margin-bottom: var(--spacing-lg);
+}
+
+.hero-actions {
+  margin-top: var(--spacing-lg);
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center;
+}
+
+/* Quantum State Visualization */
+.state-banner {
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  border-radius: var(--border-radius);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.state-creation {
+  background-color: var(--creation-color);
+  border-left: 6px solid var(--creation-border);
+}
+
+.state-integration {
+  background-color: var(--integration-color);
+  border-left: 6px solid var(--integration-border);
+  color: white;
+}
+
+.state-application {
+  background-color: var(--application-color);
+  border-left: 6px solid var(--application-border);
+  color: white;
+}
+
+.state-foundation {
+  background-color: var(--foundation-color);
+  border-left: 6px solid var(--foundation-border);
+}
+
+.state-indicator {
+  font-weight: bold;
+  font-family: var(--header-font);
+  font-size: 1.1rem;
+}
+
+.state-timestamp {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.state-content {
+  margin-top: var(--spacing-lg);
+}
+
+.related-components {
+  margin-top: var(--spacing-xl);
+  padding: var(--spacing-md);
+  background-color: var(--light-color);
+  border-radius: var(--border-radius);
+}
+
+.related-components h2 {
+  font-size: 1.2rem;
+  margin-top: 0;
+  border-bottom: none;
+}
+
+.related-components ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.related-components li {
+  margin-bottom: var(--spacing-sm);
+}
+
+/* Flow session styling */
+.flow-session-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid #eaeaea;
+}
+
+.flow-session-meta {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.flow-meta-item {
+  padding: var(--spacing-sm);
+  background-color: var(--light-color);
+  border-radius: var(--border-radius);
+}
+
+.flow-meta-label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  font-size: 0.9rem;
+}
+
+.flow-meta-value {
+  font-size: 1.1rem;
+}
+
+.flow-state-preparation {
+  color: #adb5bd;
+}
+
+.flow-state-entry {
+  color: #6c757d;
+}
+
+.flow-state-engagement {
+  color: var(--secondary-color);
+}
+
+.flow-state-deep {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.flow-interruptions {
+  margin-top: var(--spacing-lg);
+}
+
+.flow-interruption-item {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid #eee;
+}
+
+.interruption-impact-high {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+.interruption-impact-medium {
+  color: #fd7e14;
+}
+
+.interruption-impact-low {
+  color: #6c757d;
+}
+
+.transitions {
+  margin-top: var(--spacing-lg);
+}
+
+.transition-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--spacing-sm);
+}
+
+.transition-arrow {
+  margin: 0 var(--spacing-sm);
+  color: #6c757d;
+}
+
+/* Quantum state visualization components */
+.quantum-states {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: var(--spacing-md);
+  margin: var(--spacing-xl) 0;
+  max-width: 600px;
+}
+
+.quantum-state {
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius);
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 120px;
+}
+
+.creation-state {
+  background-color: var(--creation-color);
+  color: var(--text-color);
+}
+
 .integration-state {
-  background-color: var(--secondary-color);
+  background-color: var(--integration-color);
 }
 
 .application-state {
-  background-color: var(--link-color);
+  background-color: var(--application-color);
 }
 
 .foundation-state {
-  background-color: var(--accent-color);
+  background-color: var(--foundation-color);
   color: var(--text-color);
+}
+
+.state-title {
+  font-weight: bold;
+  margin-bottom: var(--spacing-sm);
+  font-size: 1.2rem;
+}
+
+.state-description {
+  font-size: 0.9rem;
+  opacity: 0.9;
 }
 
 /* Flow state visualization */
 .flow-states {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--spacing-sm);
   max-width: 600px;
-  margin: 2rem auto;
+  margin: var(--spacing-xl) 0;
 }
 
 .flow-phase {
-  background: linear-gradient(90deg, var(--light-color) var(--width), transparent 0);
-  padding: 1rem;
-  border-radius: 4px;
-  border-left: 4px solid var(--color);
+  position: relative;
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: var(--border-radius);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
 }
 
-.preparation {
-  --width: 30%;
-  --color: #e9ecef;
+.flow-phase::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: currentColor;
+  opacity: 0.1;
+  transition: width 0.5s ease;
+  z-index: -1;
 }
 
-.entry {
-  --width: 60%;
-  --color: #ced4da;
+.preparation-phase {
+  color: #adb5bd;
+  border-left: 4px solid currentColor;
 }
 
-.engagement {
-  --width: 80%;
-  --color: #adb5bd;
+.preparation-phase::before {
+  width: 30%;
 }
 
-.deep {
-  --width: 100%;
-  --color: var(--accent-color);
+.entry-phase {
+  color: #6c757d;
+  border-left: 4px solid currentColor;
 }
 
-.hero-section {
-  text-align: center;
-  margin: 3rem 0;
+.entry-phase::before {
+  width: 60%;
 }
 
-.lead {
+.engagement-phase {
+  color: var(--secondary-color);
+  border-left: 4px solid currentColor;
+}
+
+.engagement-phase::before {
+  width: 80%;
+}
+
+.deep-phase {
+  color: var(--primary-color);
+  border-left: 4px solid currentColor;
+}
+
+.deep-phase::before {
+  width: 100%;
+}
+
+.phase-score {
+  font-weight: bold;
   font-size: 1.2rem;
-  margin: 1.5rem 0;
-  color: #495057;
 }
 
-.logo {
-  max-width: 200px;
-  margin-bottom: 1rem;
+/* Footer */
+.site-footer {
+  background-color: var(--light-color);
+  padding: var(--spacing-xl) 0;
+  margin-top: var(--spacing-xxl);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-xl);
+}
+
+.footer-column h4 {
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: var(--spacing-sm);
+}
+
+.footer-bottom {
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid #dee2e6;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+/* Utility classes */
+.text-center {
+  text-align: center;
+}
+
+.mt-0 { margin-top: 0 !important; }
+.mt-1 { margin-top: var(--spacing-sm) !important; }
+.mt-2 { margin-top: var(--spacing-md) !important; }
+.mt-3 { margin-top: var(--spacing-lg) !important; }
+.mt-4 { margin-top: var(--spacing-xl) !important; }
+.mt-5 { margin-top: var(--spacing-xxl) !important; }
+
+.mb-0 { margin-bottom: 0 !important; }
+.mb-1 { margin-bottom: var(--spacing-sm) !important; }
+.mb-2 { margin-bottom: var(--spacing-md) !important; }
+.mb-3 { margin-bottom: var(--spacing-lg) !important; }
+.mb-4 { margin-bottom: var(--spacing-xl) !important; }
+.mb-5 { margin-bottom: var(--spacing-xxl) !important; }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .quantum-states {
+    grid-template-columns: 1fr;
+  }
+  
+  .hero {
+    padding: var(--spacing-xl) 0;
+  }
+  
+  .hero-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .flow-session-meta {
+    grid-template-columns: 1fr;
+  }
+  
+  .flow-interruption-item {
+    grid-template-columns: 1fr 2fr;
+  }
 }

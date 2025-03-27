@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>index.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FloShake - Intelligence-Augmented Creativity</title>
+    <meta name="description" content="FloShake represents a paradigm shift in how humans interact with information&#x2014;transcending traditional content management to establish a new category of intelligence-augmented creativity.">
+</head></html><pre><code>&lt;!-- Google Fonts --&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link href=&quot;https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Montserrat:wght@600;700&amp;family=Fira+Mono&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+
+&lt;!-- Custom CSS --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/assets/css/main.css&quot;&gt;
+
+&lt;!-- Favicon (placeholder) --&gt;
+&lt;link rel=&quot;icon&quot; href=&quot;/assets/images/favicon.ico&quot;&gt;
+</code></pre>
+
+<body>
+    <!-- Navigation -->
+    <header class="site-header">
+        <div class="container nav-container">
+            <a href="/" class="site-title"><span class="flo">Flo</span><span class="shake">Shake</span></a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span>&#x2630;</span>
+            </button>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/" class="nav-link active">Home</a></li>
+                    <li><a href="/about/" class="nav-link">About</a></li>
+                    <li><a href="/docs/" class="nav-link">Documentation</a></li>
+                    <li><a href="/blog/" class="nav-link">Development Log</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+</body><pre><code>&lt;!-- Hero Section --&gt;
+&lt;section class=&quot;hero&quot;&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;div class=&quot;hero-content&quot;&gt;
+            &lt;h1&gt;Blending Human Wisdom with AI to Enhance Creative Flow&lt;/h1&gt;
+            &lt;p class=&quot;lead&quot;&gt;FloShake represents a paradigm shift in how humans interact with information—transforming knowledge work through intelligence-augmented creativity.&lt;/p&gt;
+            &lt;div class=&quot;hero-actions&quot;&gt;
+                &lt;a href=&quot;/docs/&quot; class=&quot;button primary&quot;&gt;Explore Documentation&lt;/a&gt;
+                &lt;a href=&quot;/blog/&quot; class=&quot;button&quot;&gt;Development Log&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- Main Content --&gt;
+&lt;main class=&quot;container&quot;&gt;
+    &lt;!-- Quantum States Visualization --&gt;
+    &lt;section&gt;
+        &lt;h2&gt;Quantum State Content Model&lt;/h2&gt;
+        &lt;p&gt;FloShake reconceptualizes content not as static artifacts in linear workflows, but as dynamic entities existing across multiple quantum states simultaneously.&lt;/p&gt;
+        
+        &lt;div class=&quot;quantum-states&quot;&gt;
+            &lt;div class=&quot;quantum-state creation-state&quot;&gt;
+                &lt;div class=&quot;state-title&quot;&gt;Creation Space&lt;/div&gt;
+                &lt;div class=&quot;state-description&quot;&gt;Nascent ideas in formative development&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;quantum-state integration-state&quot;&gt;
+                &lt;div class=&quot;state-title&quot;&gt;Integration Space&lt;/div&gt;
+                &lt;div class=&quot;state-description&quot;&gt;Connections forming between discrete elements&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;quantum-state application-state&quot;&gt;
+                &lt;div class=&quot;state-title&quot;&gt;Application Space&lt;/div&gt;
+                &lt;div class=&quot;state-description&quot;&gt;Practical implementation of synthesized concepts&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;quantum-state foundation-state&quot;&gt;
+                &lt;div class=&quot;state-title&quot;&gt;Foundation Space&lt;/div&gt;
+                &lt;div class=&quot;state-description&quot;&gt;Established knowledge serving as building blocks&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- Flow States Visualization --&gt;
+    &lt;section&gt;
+        &lt;h2&gt;Flow Protection Framework&lt;/h2&gt;
+        &lt;p&gt;FloShake protects your deep creative states through ML-driven pattern recognition, detecting flow states across a continuous spectrum and managing interruptions based on their contextual impact.&lt;/p&gt;
+        
+        &lt;div class=&quot;flow-states&quot;&gt;
+            &lt;div class=&quot;flow-phase preparation-phase&quot;&gt;
+                &lt;span&gt;Preparation Phase&lt;/span&gt;
+                &lt;span class=&quot;phase-score&quot;&gt;0-30&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;flow-phase entry-phase&quot;&gt;
+                &lt;span&gt;Entry Phase&lt;/span&gt;
+                &lt;span class=&quot;phase-score&quot;&gt;31-60&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;flow-phase engagement-phase&quot;&gt;
+                &lt;span&gt;Engagement Phase&lt;/span&gt;
+                &lt;span class=&quot;phase-score&quot;&gt;61-80&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;flow-phase deep-phase&quot;&gt;
+                &lt;span&gt;Deep Phase&lt;/span&gt;
+                &lt;span class=&quot;phase-score&quot;&gt;81-100&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- Core Components --&gt;
+    &lt;section&gt;
+        &lt;h2&gt;Core Components&lt;/h2&gt;
+        &lt;div class=&quot;grid&quot;&gt;
+            &lt;div class=&quot;card&quot;&gt;
+                &lt;h3 class=&quot;card-title&quot;&gt;Serendipity Engine&lt;/h3&gt;
+                &lt;p class=&quot;card-content&quot;&gt;Pattern recognition revealing non-obvious connections across content repositories through machine learning that continuously improves its understanding of relationship significance.&lt;/p&gt;
+                &lt;a href=&quot;/docs/serendipity/&quot; class=&quot;button&quot;&gt;Learn More&lt;/a&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;card&quot;&gt;
+                &lt;h3 class=&quot;card-title&quot;&gt;Flow Protection Core&lt;/h3&gt;
+                &lt;p class=&quot;card-content&quot;&gt;ML-driven detection and protection of deep creative states, calculating the contextual impact of potential interruptions to maintain creative momentum.&lt;/p&gt;
+                &lt;a href=&quot;/docs/flow-protection/&quot; class=&quot;button&quot;&gt;Learn More&lt;/a&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;card&quot;&gt;
+                &lt;h3 class=&quot;card-title&quot;&gt;Quantum State Model&lt;/h3&gt;
+                &lt;p class=&quot;card-content&quot;&gt;A framework allowing content to exist simultaneously across creation, integration, application, and foundation spaces with intelligent transition pathways.&lt;/p&gt;
+                &lt;a href=&quot;/docs/quantum-states/&quot; class=&quot;button&quot;&gt;Learn More&lt;/a&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;card&quot;&gt;
+                &lt;h3 class=&quot;card-title&quot;&gt;Integration Framework&lt;/h3&gt;
+                &lt;p class=&quot;card-content&quot;&gt;Connects FloShake capabilities to external systems and workflows, creating a comprehensive intelligence-augmented ecosystem.&lt;/p&gt;
+                &lt;a href=&quot;/docs/integration/&quot; class=&quot;button&quot;&gt;Learn More&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- Implementation Approach --&gt;
+    &lt;section&gt;
+        &lt;h2&gt;Implementation Approach&lt;/h2&gt;
+        &lt;p&gt;FloShake itself is being built using the quantum state model, with its own development organized across the four quantum states:&lt;/p&gt;
+        
+        &lt;div class=&quot;card&quot;&gt;
+            &lt;h3 class=&quot;state-indicator state-creation&quot;&gt;Creation State&lt;/h3&gt;
+            &lt;p&gt;Explore the conceptual foundations and early-stage explorations of FloShake, including Agentic RAG integration, Model Context Protocol, and visual identity concepts.&lt;/p&gt;
+            &lt;a href=&quot;/_states/creation/&quot; class=&quot;button&quot;&gt;View Creation State&lt;/a&gt;
+        &lt;/div&gt;
+        
+        &lt;div class=&quot;card&quot;&gt;
+            &lt;h3 class=&quot;state-indicator state-integration&quot;&gt;Integration State&lt;/h3&gt;
+            &lt;p&gt;Discover how FloShake concepts connect through architectural diagrams, component relationships, and system integration documentation.&lt;/p&gt;
+            &lt;a href=&quot;/_states/integration/&quot; class=&quot;button&quot;&gt;View Integration State&lt;/a&gt;
+        &lt;/div&gt;
+        
+        &lt;div class=&quot;card&quot;&gt;
+            &lt;h3 class=&quot;state-indicator state-application&quot;&gt;Application State&lt;/h3&gt;
+            &lt;p&gt;See FloShake implementation plans, functional prototypes, and deployed documentation in action.&lt;/p&gt;
+            &lt;a href=&quot;/_states/application/&quot; class=&quot;button&quot;&gt;View Application State&lt;/a&gt;
+        &lt;/div&gt;
+        
+        &lt;div class=&quot;card&quot;&gt;
+            &lt;h3 class=&quot;state-indicator state-foundation&quot;&gt;Foundation State&lt;/h3&gt;
+            &lt;p&gt;Explore the stable components, established visual identity elements, and core building blocks that form FloShake's foundation.&lt;/p&gt;
+            &lt;a href=&quot;/_states/foundation/&quot; class=&quot;button&quot;&gt;View Foundation State&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- Meta-Implementation --&gt;
+    &lt;section&gt;
+        &lt;h2&gt;Meta-Implementation: FloShake Builds FloShake&lt;/h2&gt;
+        &lt;p&gt;We're using FloShake to build FloShake - applying the quantum state model and flow protection principles to our own development process. This self-referential approach makes the website itself a demonstration of the concepts it describes.&lt;/p&gt;
+        &lt;a href=&quot;/blog/&quot; class=&quot;button&quot;&gt;Follow Our Development Journey&lt;/a&gt;
+    &lt;/section&gt;
+&lt;/main&gt;
+
+&lt;!-- Footer --&gt;
+&lt;footer class=&quot;site-footer&quot;&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;div class=&quot;footer-grid&quot;&gt;
+            &lt;div class=&quot;footer-column&quot;&gt;
+                &lt;h4&gt;FloShake&lt;/h4&gt;
+                &lt;ul class=&quot;footer-links&quot;&gt;
+                    &lt;li&gt;&lt;a href=&quot;/&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;/about/&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;/docs/&quot;&gt;Documentation&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;/blog/&quot;&gt;Development Log&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;footer-column&quot;&gt;
+                &lt;h4&gt;Components&lt;/h4&gt;
+                &lt;ul class=&quot;footer-links&quot;&gt;
+                    &lt;li&gt;&lt;a href=&quot;/docs/flow-protection/&quot;&gt;Flow Protection&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;/docs/quantum-states/&quot;&gt;Quantum States&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;/docs/serendipity/&quot;&gt;Serendipity Engine&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;/docs/integration/&quot;&gt;Integration&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;footer-column&quot;&gt;
+                &lt;h4&gt;Resources&lt;/h4&gt;
+                &lt;ul class=&quot;footer-links&quot;&gt;
+                    &lt;li&gt;&lt;a href=&quot;https://github.com/dereksimmons23/FloShake&quot;&gt;GitHub&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;/docs/&quot;&gt;Documentation&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;/blog/&quot;&gt;Development Log&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;footer-bottom&quot;&gt;
+            &lt;p&gt;&amp;copy; 2025 FloShake. Created by Derek Claude Simmons.&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/footer&gt;
+
+&lt;!-- JavaScript for navigation toggle --&gt;
+&lt;script&gt;
+    document.addEventListener('DOMContentLoaded', function() {
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        navToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+    });
+&lt;/script&gt;
+</code></pre>
+
+
+</body>
+</html>
