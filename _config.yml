@@ -50,3 +50,13 @@ exclude:
   - CNAME
   - README.md
   - LICENSE
+
+# Google Fonts
+google_fonts: 
+  - "Montserrat:400,700"
+  - "Inter:400,700"
+  - "Fira+Mono:400"
+
+# Custom CSS
+stylesheets:
+  - "/assets/css/main.css"
