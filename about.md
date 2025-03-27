@@ -1,57 +1,40 @@
 ---
-layout: page
+layout: default
 title: About FloShake
 permalink: /about/
 ---
 
-# About FloShake
+<div class="state-banner state-integration">
+    <div class="state-indicator">Integration State</div>
+    <div class="state-timestamp">Last updated: March 27, 2025</div>
+</div>
 
-FloShake represents a transformative reimagining of knowledge work through intelligence-augmented creativity. By blending human wisdom with AI, we create a framework that enhances creative flow in unprecedented ways.
+<article class="about-content">
+    <section class="card">
+        <h2>The Vision</h2>
+        <p>FloShake represents a paradigm shift in knowledge work, addressing the limitations of traditional productivity tools:</p>
+        <ul>
+            <li><strong>Linear Process Architecture</strong>: Misaligned with cognitive workflows.</li>
+            <li><strong>Static Relationship Models</strong>: Fails to discover emergent connections.</li>
+            <li><strong>Interruption-Driven Experiences</strong>: Undermines creative momentum.</li>
+            <li><strong>Manual Connection Creation</strong>: Misses implicit relationships.</li>
+        </ul>
+        <p>FloShake transcends these limitations through intelligence-augmented creativity.</p>
+    </section>
 
-## The Vision
+    <section class="card">
+        <h2>Core Framework Components</h2>
+        <p>FloShake's transformative impact is built on four key components:</p>
+        <ul>
+            <li><strong>Quantum State Content Model</strong>: Dynamic content existing across multiple states.</li>
+            <li><strong>Flow Protection Framework</strong>: ML-driven interruption management.</li>
+            <li><strong>Serendipity Engine</strong>: Pattern recognition for hidden connections.</li>
+            <li><strong>Integration Framework</strong>: Extending capabilities across systems.</li>
+        </ul>
+    </section>
 
-Current knowledge worker productivity tools face fundamental constraints that limit transformative potential:
-
-- **Linear Process Architecture**: Legacy systems enforce sequential workflows misaligned with cognitive reality
-- **Static Relationship Models**: Traditional platforms fail to discover emergent connections between knowledge assets
-- **Interruption-Driven Experiences**: Current notification frameworks actively undermine creative momentum
-- **Manual Connection Creation**: Existing systems require explicit linking, missing implicit relationships
-
-FloShake transcends these limitations through a fundamentally new approach:
-
-## Core Framework Components
-
-### Quantum State Content Model
-
-Content in FloShake exists simultaneously across four fundamental states:
-
-- **Creation Space**: Nascent ideas in formative development
-- **Integration Space**: Connections forming between discrete elements
-- **Application Space**: Practical implementation of synthesized concepts
-- **Foundation Space**: Established knowledge serving as building blocks
-
-### Flow Intelligence Framework
-
-FloShake protects and enhances deep creative states through:
-
-- **State Detection**: ML-driven recognition of flow states across a continuous spectrum
-- **Interruption Analysis**: Contextual impact assessment of potential disruptions
-- **Protection Mechanisms**: Intelligent notification orchestration and context preservation
-- **Recovery Optimization**: Accelerated return to flow after necessary interruptions
-
-### Serendipity Amplification Engine
-
-Pattern recognition reveals non-obvious connections through:
-
-- **Thematic Pattern Recognition**: Identifying conceptual relationships across content
-- **Temporal Pattern Analysis**: Discovering time-based connections and evolution
-- **Contextual Understanding**: Learning from usage patterns and environment
-- **Cross-Domain Insight Generation**: Revealing connections between disparate knowledge areas
-
-## The Team
-
-FloShake was founded by Derek Claude Simmons, bringing together expertise in media, sports coaching, and artificial intelligence with a deep commitment to enhancing human potential through technology.
-
-## Join the Journey
-
-FloShake is currently in active development. Follow our [development log](/blog/) for updates on our progress and opportunities to participate in early testing.
+    <section class="card">
+        <h2>Learn More</h2>
+        <p>Visit the <a href="/docs/">documentation</a> for technical details or follow our <a href="/blog/">development log</a> for updates.</p>
+    </section>
+</article>
