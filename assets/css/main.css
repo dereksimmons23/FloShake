@@ -235,6 +235,7 @@ section {
 
 .main-navigation li {
   margin: 0;
+  position: relative;
 }
 
 .main-navigation a {
@@ -250,6 +251,45 @@ section {
 .main-navigation a.active {
   color: var(--integration-color);
   border-bottom-color: var(--integration-color);
+}
+
+/* Submenu styles */
+.submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  box-shadow: var(--shadow-md);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-sm);
+  z-index: 200;
+  min-width: 220px;
+  flex-direction: column;
+}
+
+.main-navigation li:hover .submenu {
+  display: flex;
+}
+
+.submenu li {
+  margin: 0;
+  width: 100%;
+}
+
+.submenu a {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-bottom: none;
+  border-left: 3px solid transparent;
+  font-weight: normal;
+  font-size: 0.9rem;
+}
+
+.submenu a:hover,
+.submenu a.active {
+  background-color: rgba(var(--integration-color-rgb), 0.1);
+  border-bottom: none;
+  border-left: 3px solid var(--integration-color);
 }
 
 /* ===== INTRO SECTION ===== */
@@ -653,6 +693,226 @@ section {
   .flow-phase,
   .agent-type {
     padding: var(--spacing-md);
+  }
+}
+
+/* ===== STATE LAYOUT ===== */
+.state-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+}
+
+.state-context {
+  background-color: white;
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.state-context-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-sm);
+}
+
+.state-context-header h4 {
+  margin: 0;
+}
+
+.state-progression {
+  display: flex;
+  align-items: center;
+}
+
+.state-dot {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #e9ecef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.state-dot.active {
+  background-color: var(--integration-color);
+  color: white;
+}
+
+.state-arrow {
+  margin: 0 var(--spacing-xs);
+  color: #adb5bd;
+}
+
+.state-description {
+  padding: var(--spacing-sm) 0;
+}
+
+.state-description p {
+  margin: 0;
+}
+
+.state-metadata {
+  background-color: white;
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.state-metadata h4 {
+  margin-top: 0;
+  margin-bottom: var(--spacing-sm);
+  font-size: 1.1rem;
+}
+
+.state-history-list,
+.related-components-list,
+.contributors-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.transition-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--spacing-xs);
+}
+
+.transition-arrow {
+  margin: 0 var(--spacing-xs);
+  color: #6c757d;
+}
+
+.transition-date {
+  margin-left: auto;
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+.component-state {
+  font-size: 0.8rem;
+  padding: 2px 6px;
+  border-radius: 12px;
+  margin-left: var(--spacing-xs);
+}
+
+.state-actions {
+  background-color: white;
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.action-buttons {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.transition-note {
+  font-size: 0.9rem;
+  color: #6c757d;
+  margin: 0;
+}
+
+/* State-specific colors for component badges */
+.component-state.state-creation {
+  background-color: var(--creation-color);
+  color: white;
+}
+
+.component-state.state-integration {
+  background-color: var(--integration-color);
+  color: white;
+}
+
+.component-state.state-application {
+  background-color: var(--application-color);
+  color: white;
+}
+
+.component-state.state-foundation {
+  background-color: var(--foundation-color);
+  color: white;
+}
+
+/* State banner styles */
+.state-banner {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--border-radius-md);
+  margin-bottom: var(--spacing-md);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.state-banner.state-creation {
+  background-color: var(--creation-color);
+}
+
+.state-banner.state-integration {
+  background-color: var(--integration-color);
+}
+
+.state-banner.state-application {
+  background-color: var(--application-color);
+}
+
+.state-banner.state-foundation {
+  background-color: var(--foundation-color);
+}
+
+.state-indicator {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.state-timestamp {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+/* Media queries for responsive layout */
+@media (min-width: 992px) {
+  .state-container {
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas:
+      "banner banner"
+      "context context"
+      "content metadata"
+      "actions actions";
+  }
+  
+  .state-banner {
+    grid-area: banner;
+  }
+  
+  .state-context {
+    grid-area: context;
+  }
+  
+  .state-content {
+    grid-area: content;
+  }
+  
+  .state-metadata {
+    grid-area: metadata;
+  }
+  
+  .state-actions {
+    grid-area: actions;
+  }
+}
+
+@media (max-width: 991px) {
+  .action-buttons {
+    flex-direction: column;
   }
 }
 

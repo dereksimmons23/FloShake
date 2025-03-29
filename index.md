@@ -136,8 +136,8 @@ description: "FloShake represents a paradigm shift in how humans interact with i
     <h2>Agentic RAG Integration</h2>
     <p>FloShake now incorporates Agentic RAG architecture to enhance intelligence amplification across quantum states, with specialized document agents that understand content within specific states and a meta-agent that orchestrates transitions and discovers cross-state patterns.</p>
     
-    <div class="architecture-diagram-placeholder">
-      <span>Coming in Week 2: Agentic RAG Architecture Diagram</span>
+    <div class="architecture-diagram">
+      <img src="/assets/images/diagrams/agentic-rag-architecture.svg" alt="FloShake Agentic RAG Architecture Diagram" width="100%" />
     </div>
     
     <div class="agent-types">
@@ -151,6 +151,8 @@ description: "FloShake represents a paradigm shift in how humans interact with i
         <p>Orchestrates interactions between document agents, manages state transitions, surfaces connections across states, and applies flow protection policies.</p>
       </div>
     </div>
+    
+    <a href="/docs/agentic-rag/" class="component-link">Explore Agentic RAG Documentation</a>
   </div>
 </section>
 
@@ -162,6 +164,8 @@ description: "FloShake represents a paradigm shift in how humans interact with i
     <div class="mcp-integration-placeholder">
       <span>Coming in Week 2: MCP Integration Diagram</span>
     </div>
+    
+    <a href="/docs/model-context-protocol/" class="component-link">Explore MCP Documentation</a>
   </div>
 </section>
 
@@ -203,6 +207,8 @@ description: "FloShake represents a paradigm shift in how humans interact with i
           <li><a href="/docs/quantum-states/">Quantum States</a></li>
           <li><a href="/docs/serendipity/">Serendipity Engine</a></li>
           <li><a href="/docs/integration/">Integration</a></li>
+          <li><a href="/docs/agentic-rag/">Agentic RAG</a></li>
+          <li><a href="/docs/model-context-protocol/">Model Context Protocol</a></li>
         </ul>
       </div>
       

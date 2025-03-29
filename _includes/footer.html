@@ -1,0 +1,38 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-columns">
+      <div class="footer-column">
+        <h3>FloShake</h3>
+        <ul>
+          <li><a href="{{ '/' | relative_url }}">Home</a></li>
+          <li><a href="{{ '/about/' | relative_url }}">About</a></li>
+          <li><a href="{{ '/docs/' | relative_url }}">Documentation</a></li>
+          <li><a href="{{ '/blog/' | relative_url }}">Development Log</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Components</h3>
+        <ul>
+          <li><a href="{{ '/docs/flow-protection/' | relative_url }}">Flow Protection</a></li>
+          <li><a href="{{ '/docs/quantum-states/' | relative_url }}">Quantum States</a></li>
+          <li><a href="{{ '/docs/serendipity/' | relative_url }}">Serendipity Engine</a></li>
+          <li><a href="{{ '/docs/integration/' | relative_url }}">Integration</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="https://github.com/dereksimmons23/FloShake">GitHub</a></li>
+          <li><a href="{{ '/docs/' | relative_url }}">Documentation</a></li>
+          <li><a href="{{ '/blog/' | relative_url }}">Development Log</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="copyright">
+      &copy; {{ site.time | date: '%Y' }} FloShake. Created by {{ site.author }}.
+    </div>
+  </div>
+</footer>

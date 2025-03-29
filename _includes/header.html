@@ -1,0 +1,22 @@
+<header class="site-header">
+  <div class="container">
+    <nav class="main-navigation">
+      <ul>
+        <li><a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>Home</a></li>
+        <li><a href="{{ '/about/' | relative_url }}" {% if page.url == '/about/' %}class="active"{% endif %}>About</a></li>
+        <li>
+          <a href="{{ '/docs/' | relative_url }}" {% if page.url contains '/docs/' %}class="active"{% endif %}>Documentation</a>
+          <ul class="submenu">
+            <li><a href="{{ '/docs/flow-protection/' | relative_url }}" {% if page.url contains '/docs/flow-protection/' %}class="active"{% endif %}>Flow Protection</a></li>
+            <li><a href="{{ '/docs/quantum-states/' | relative_url }}" {% if page.url contains '/docs/quantum-states/' %}class="active"{% endif %}>Quantum States</a></li>
+            <li><a href="{{ '/docs/serendipity/' | relative_url }}" {% if page.url contains '/docs/serendipity/' %}class="active"{% endif %}>Serendipity Engine</a></li>
+            <li><a href="{{ '/docs/integration/' | relative_url }}" {% if page.url contains '/docs/integration/' %}class="active"{% endif %}>Integration</a></li>
+            <li><a href="{{ '/docs/agentic-rag/' | relative_url }}" {% if page.url contains '/docs/agentic-rag/' %}class="active"{% endif %}>Agentic RAG</a></li>
+            <li><a href="{{ '/docs/model-context-protocol/' | relative_url }}" {% if page.url contains '/docs/model-context-protocol/' %}class="active"{% endif %}>Model Context Protocol</a></li>
+          </ul>
+        </li>
+        <li><a href="{{ '/blog/' | relative_url }}" {% if page.url contains '/blog/' %}class="active"{% endif %}>Development Log</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
