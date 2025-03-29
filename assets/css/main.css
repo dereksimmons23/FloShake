@@ -1,5 +1,9 @@
 /* main.css */
 
+.main-navigation .has-submenu {
+  position: relative;
+}
+
 /* ===== VARIABLES ===== */
 :root {
   /* Quantum State Colors */
@@ -338,8 +342,10 @@ section {
 }
 
 /* Only show submenu on hover */
-.main-navigation .has-submenu:hover > .submenu {
-  display: flex;
+@media (min-width: 768px) {
+  .main-navigation .has-submenu:hover > .submenu {
+    display: flex;
+  }
 }
 
 .submenu li {
@@ -771,11 +777,13 @@ section {
   
   .submenu {
     position: static;
+    display: none;
     box-shadow: none;
     width: 100%;
     padding-left: var(--spacing-lg);
     background-color: rgba(0, 0, 0, 0.02);
     border-radius: 0;
+    margin-top: 0;
   }
   
   .submenu a {
