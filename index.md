@@ -13,14 +13,7 @@ description: "FloShake represents a paradigm shift in how humans interact with i
   </div>
 </div>
 
-<nav class="main-navigation">
-  <ul>
-    <li><a href="/">Home</a></li>
-    <li><a href="/about/">About</a></li>
-    <li><a href="/docs/">Documentation</a></li>
-    <li><a href="/blog/">Development Log</a></li>
-  </ul>
-</nav>
+<!-- Main navigation is included in the header -->
 
 <section class="intro-section">
   <div class="container">

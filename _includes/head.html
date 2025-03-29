@@ -18,6 +18,9 @@
   
   {%- feed_meta -%}
   
+  <!-- Navigation JavaScript -->
+  <script src="{{ '/assets/js/navigation.js' | relative_url }}"></script>
+  
   {%- if jekyll.environment == 'production' and site.google_analytics -%}
     {%- include google-analytics.html -%}
   {%- endif -%}
